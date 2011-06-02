@@ -10,7 +10,7 @@ def automate():
     html_list = []
               
     for i in file_list: # for each image in the image list
-        name = i[:-4]   # slice the last 4 characters (file extension) for the name 
+        name = i[:-4]   # slice the last 4 characters (file extension) for the name
         if i.endswith("jpg") or i.endswith("png") or i.endswith("gif"): # grabs jpg, png or gif files to put into the list
             html_list.append('''<a href="%s" onclick="showimg(this);return false">%s</a><br/>''' % (i, name))   # replace the variables with file/names
 
@@ -52,6 +52,7 @@ p	{
 	background-color:#FFFFFF;
 	border-left: solid 1px #BBBBBB;
 	border-bottom: solid 1px #BBBBBB;
+	width: 250px; 
 	}
 #menubtn	{
 	position:fixed;
@@ -74,6 +75,8 @@ a:link     {color:#88818C; text-decoration:none}
 a:visited  {color:#88818C; text-decoration:none}
 a:active   {color:#88818C; text-decoration:none}
 a:hover    {color:#4D33CC; text-decoration:none}
+
+h2 { font-size: 14px; line-height: 16px; }
 -->
 </style>
 <script type="text/javascript">
