@@ -8,12 +8,13 @@ def automate():
     current_d = os.getcwd()
     file_list = os.listdir(current_d)    
     html_list = []
-              
+
+    file_list.sort()    # sorts the files by 00, 01, 02...        
     for i in file_list: # for each image in the image list
-        name = i[:-4]   # slice the last 4 characters (file extension) for the name
+        name = i[:-4]   # slice the last 4 characters (file extension) for the name 
         if i.endswith("jpg") or i.endswith("png") or i.endswith("gif"): # grabs jpg, png or gif files to put into the list
             html_list.append('''<a href="%s" onclick="showimg(this);return false">%s</a><br/>''' % (i, name))   # replace the variables with file/names
-
+    
     return html_list
 
 # outputs the html page with the automated image list
@@ -30,58 +31,7 @@ def save_html(title):
 <title>%s</title>
 <meta http-equiv="imagetoolbar" content="no">
 <style type="text/css">
-<!-- CSS RESET
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-END RESET -->
-
+<!--
 #mainimg {border:none;}
 body	{
 	font-family: Verdana;
@@ -103,7 +53,6 @@ p	{
 	background-color:#FFFFFF;
 	border-left: solid 1px #BBBBBB;
 	border-bottom: solid 1px #BBBBBB;
-	width: 250px; 
 	}
 #menubtn	{
 	position:fixed;
@@ -126,8 +75,6 @@ a:link     {color:#88818C; text-decoration:none}
 a:visited  {color:#88818C; text-decoration:none}
 a:active   {color:#88818C; text-decoration:none}
 a:hover    {color:#4D33CC; text-decoration:none}
-
-h2 { font-size: 14px; line-height: 20px; }
 -->
 </style>
 <script type="text/javascript">
@@ -135,7 +82,6 @@ h2 { font-size: 14px; line-height: 20px; }
 var nextnum = 0;
 var currenta;
 var currentimg;
-var anchor;
 var hreflist = document.getElementsByTagName('a');
 function hidemenu() {
 	document.getElementById("navpane").style.display = "none";
@@ -149,8 +95,7 @@ function showfirst() {
 	hreflist[0].className = "sel";
 	currenta = hreflist[0];
 	currentimg = hreflist[0].getAttribute("href",2);
-	document.getElementById("mainimg").setAttribute("src", currentimg);	
-	window.location.href  =  "#" + currentimg;
+	document.getElementById("mainimg").setAttribute("src", currentimg);
 	}
 function showimg(imgpathobj) {
 	hreflist[nextnum].className = "";
@@ -161,7 +106,6 @@ function showimg(imgpathobj) {
 	document.getElementById("mainimg").setAttribute("src", imgpath);
 	currentimg=imgpath;
 	window.scroll(0,0);
-	window.location.href  =  "#" + currentimg;
 	}
 function shownext() {
 	for (var B = 0; B < hreflist.length; B++) {
@@ -174,10 +118,8 @@ function shownext() {
 			currentimg=hreflist[nextnum].getAttribute("href",2);
 			document.getElementById("mainimg").setAttribute("src", currentimg);
 			window.scroll(0,0);
-			window.location.href  =  "#" + currentimg;
 			return;
 		};
-		
 	}
 	}
 
