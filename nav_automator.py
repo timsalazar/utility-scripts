@@ -75,6 +75,7 @@ a:link     {color:#88818C; text-decoration:none}
 a:visited  {color:#88818C; text-decoration:none}
 a:active   {color:#88818C; text-decoration:none}
 a:hover    {color:#4D33CC; text-decoration:none}
+h2 { font-size: 12px; }
 -->
 </style>
 <script type="text/javascript">
