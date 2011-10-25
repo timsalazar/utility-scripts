@@ -1,0 +1,1 @@
+"Save as" to save the script to your computer. Drop the script into any directory with images and it will output an html file + menu to click-thru the images. Should work automatically on OS X with no additional install. For Windows, you'll probably need to install Python. This was written in 2.7.1. 
