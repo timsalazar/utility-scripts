@@ -11,11 +11,11 @@ def automate():
 
     file_list.sort()    # sorts the files by 00, 01, 02...        
     for i in file_list: # for each image in the image list
-		if i.lower().startswith("."):
-			file_list.remove(i)
-        	name = i[:-4]   # slice the last 4 characters (file extension) for the name
- 		if i.lower().endswith("jpg") or i.lower().endswith("png") or i.lower().endswith("gif"): # grabs jpg, png or gif files to put into the list
-			html_list.append('''<a href="%s" onclick="showimg(this);return false">%s</a><br/>''' % (i, name))   # replace the variables with file/names
+          if i.lower().startswith("."):
+               file_list.remove(i)
+               name = i[:-4]   # slice the last 4 characters (file extension) for the name
+          if i.lower().endswith("jpg") or i.lower().endswith("png") or i.lower().endswith("gif"): # grabs jpg, png or gif files to put into the list
+               html_list.append('''<a href="%s" onclick="showimg(this);return false">%s</a><br/>''' % (i, name))   # replace the variables with file/names
     
     return html_list
 
@@ -35,42 +35,42 @@ def save_html(title):
 <style type="text/css">
 <!--
 #mainimg {border:none;}
-body	{
-	font-family: Verdana;
-	font-size: 67%%;
-	color: #3E3B40;
-	margin: 0px;
-	}
+body {
+     font-family: Verdana;
+     font-size: 67%%;
+     color: #3E3B40;
+     margin: 0px;
+     }
 
-p	{
-	margin-top: 0px; 
-	margin-bottom: 2px;
-	}
-#navpane	{
-	position:fixed;
-	padding: 5px 7px 6px 7px;
-	right:0px;
-	top:0px;
-	line-height:140%%;
-	background-color:#FFFFFF;
-	border-left: solid 1px #BBBBBB;
-	border-bottom: solid 1px #BBBBBB;
-	}
-#menubtn	{
-	position:fixed;
-	padding: 2px;
-	right:0px;
-	top:0px;
-	line-height:140%%;
-	background-color:#FFFFFF;
-	border-left: solid 1px #BBBBBB;
-	border-bottom: solid 1px #BBBBBB;
-	cursor: pointer
-	}
+p    {
+     margin-top: 0px; 
+     margin-bottom: 2px;
+     }
+#navpane  {
+     position:fixed;
+     padding: 5px 7px 6px 7px;
+     right:0px;
+     top:0px;
+     line-height:140%%;
+     background-color:#FFFFFF;
+     border-left: solid 1px #BBBBBB;
+     border-bottom: solid 1px #BBBBBB;
+     }
+#menubtn  {
+     position:fixed;
+     padding: 2px;
+     right:0px;
+     top:0px;
+     line-height:140%%;
+     background-color:#FFFFFF;
+     border-left: solid 1px #BBBBBB;
+     border-bottom: solid 1px #BBBBBB;
+     cursor: pointer
+     }
 .hidemenu {
-	cursor: pointer;
-	text-align: center;
-	}
+     cursor: pointer;
+     text-align: center;
+     }
 .sel    {background-color:#EEEEEE};
 a          {color:#88818C; text-decoration:none}
 a:link     {color:#88818C; text-decoration:none}
@@ -87,44 +87,44 @@ var currenta;
 var currentimg;
 var hreflist = document.getElementsByTagName('a');
 function hidemenu() {
-	document.getElementById("navpane").style.display = "none";
-	document.getElementById("menubtn").style.display = "block";
-	}
+     document.getElementById("navpane").style.display = "none";
+     document.getElementById("menubtn").style.display = "block";
+     }
 function showmenu() {
-	document.getElementById("navpane").style.display = "block";
-	document.getElementById("menubtn").style.display = "none";
-	}
+     document.getElementById("navpane").style.display = "block";
+     document.getElementById("menubtn").style.display = "none";
+     }
 function showfirst() {
-	hreflist[0].className = "sel";
-	currenta = hreflist[0];
-	currentimg = hreflist[0].getAttribute("href",2);
-	document.getElementById("mainimg").setAttribute("src", currentimg);
-	}
+     hreflist[0].className = "sel";
+     currenta = hreflist[0];
+     currentimg = hreflist[0].getAttribute("href",2);
+     document.getElementById("mainimg").setAttribute("src", currentimg);
+     }
 function showimg(imgpathobj) {
-	hreflist[nextnum].className = "";
-	imgpath=imgpathobj.getAttribute("href",2);
-	currenta.className = "";
-	imgpathobj.className = "sel";
-	currenta = imgpathobj;
-	document.getElementById("mainimg").setAttribute("src", imgpath);
-	currentimg=imgpath;
-	window.scroll(0,0);
-	}
+     hreflist[nextnum].className = "";
+     imgpath=imgpathobj.getAttribute("href",2);
+     currenta.className = "";
+     imgpathobj.className = "sel";
+     currenta = imgpathobj;
+     document.getElementById("mainimg").setAttribute("src", imgpath);
+     currentimg=imgpath;
+     window.scroll(0,0);
+     }
 function shownext() {
-	for (var B = 0; B < hreflist.length; B++) {
-		if(hreflist[B].getAttribute("href",2)==currentimg){
-			currenta.className = "";
-			hreflist[nextnum].className = "";
-			nextnum = (B < hreflist.length-2) ? B+1 : 0;
-			hreflist[nextnum].className = "sel";
-			//window.status = hreflist[nextnum].className;
-			currentimg=hreflist[nextnum].getAttribute("href",2);
-			document.getElementById("mainimg").setAttribute("src", currentimg);
-			window.scroll(0,0);
-			return;
-		};
-	}
-	}
+     for (var B = 0; B < hreflist.length; B++) {
+          if(hreflist[B].getAttribute("href",2)==currentimg){
+               currenta.className = "";
+               hreflist[nextnum].className = "";
+               nextnum = (B < hreflist.length-2) ? B+1 : 0;
+               hreflist[nextnum].className = "sel";
+               //window.status = hreflist[nextnum].className;
+               currentimg=hreflist[nextnum].getAttribute("href",2);
+               document.getElementById("mainimg").setAttribute("src", currentimg);
+               window.scroll(0,0);
+               return;
+          };
+     }
+     }
 
 // -->
 </script> 
