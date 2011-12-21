@@ -6,16 +6,17 @@ import os
 def automate():
     '''automate production of the js nav for pngs'''
     current_d = os.getcwd()
-    file_list = os.listdir(current_d)    
+    file_list = os.listdir(current_d)
     html_list = []
 
+
     file_list.sort()    # sorts the files by 00, 01, 02...        
-    for i in file_list: # for each image in the image list
-          if i.lower().startswith("."):
-               file_list.remove(i)
-               name = i[:-4]   # slice the last 4 characters (file extension) for the name
-          if i.lower().endswith("jpg") or i.lower().endswith("png") or i.lower().endswith("gif"): # grabs jpg, png or gif files to put into the list
-               html_list.append('''<a href="%s" onclick="showimg(this);return false">%s</a><br/>''' % (i, name))   # replace the variables with file/names
+    for i in file_list:
+    	print i
+    	if i.lower().endswith("jpg") or i.lower().endswith("png") or i.lower().endswith("gif"): # grabs jpg, png or gif files to put into the list
+            if not i.startswith("."):
+                name = i[:-4]
+                html_list.append('''<a href="%s" onclick="showimg(this);return false">%s</a><br/>''' % (i, name))   # replace the variables with file/names
     
     return html_list
 
